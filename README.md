@@ -1,6 +1,6 @@
 # GatewaysBack
 This sample project is managing gateways - master devices that control multiple peripheral devices.
-This project was intended to function as an API for GatewaysFront project.
+This project was intended to function as an API for [GatewaysFront](https://github.com/luismi930213/gateways-frontend) project.
 
 # Pre-requisites
 - Install [Node.js](https://nodejs.org/en/) version 16.13.*
