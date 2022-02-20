@@ -8,7 +8,7 @@ This project was intended to function as an API for [GatewaysFront](https://gith
 # Getting started
 - Clone the repository
 ```
-git clone  
+git clone https://github.com/luismi930213/gateways-backend.git
 ```
 - Install dependencies
 ```
