@@ -19,7 +19,6 @@ npm install
 ```
 npm start
 ```
-  Navigate to `http://localhost:3000`
 
 - API endpoints
 
@@ -49,6 +48,7 @@ The folder structure of this app is explained below:
 | **src/routes**           | Contain all routes                      
 | **src/models**           | Models define schemas that will be used in storing and retrieving data from database  |
 | **src/services**           | Contains basemodel.service.js, utility service to make all database queries providing a Model name  |
+| **src/services/validators**           | Contains validator.js, utility service to make request validations using [express-validator](https://express-validator.github.io/docs/)  |
 | **src**/app.js         | Entry point to express app                                                               |
 | **src**/test.data.js | This is just for testing purpose, in production environment use Migrations instead |
 | package.json             | Contains npm dependencies as well as Node scripts |

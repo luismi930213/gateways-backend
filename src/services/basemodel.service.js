@@ -41,7 +41,9 @@ class BaseModelService {
         if (!id) {
             instance = await this.model.build(data)
         } else {
-            instance = await instance.update(data)
+            let m = await this.model.findByPk(id)
+            instance = await m.update(data)
+            return instance.reload()
         }
         return instance.save()
     }

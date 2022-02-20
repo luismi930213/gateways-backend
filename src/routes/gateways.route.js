@@ -3,6 +3,7 @@ const router = express.Router()
 const path = require('path')
 const BaseModelService = require('../services/basemodel.service')
 const modelService = new BaseModelService('Gateway')
+const validator = require('../services/validators/validator')
 
 router.get('/',
     async (req, res, next) => {
@@ -19,6 +20,8 @@ router.get('/',
     })
 
 router.post('/',
+    validator.gatewaySaveRules,
+    validator.validate,
     async (req, res, next) => {
         const data = await modelService.save(req.body)
         res.send({ data: data })
@@ -31,8 +34,10 @@ router.get('/:id',
     })
 
 router.put('/:id',
+    validator.gatewaySaveRules,
+    validator.validate,
     async (req, res, next) => {
-        const data = await modelService.save(req.body, req, params.id)
+        const data = await modelService.save(req.body, req.params.id)
         res.send({ data: data })
     })
 
