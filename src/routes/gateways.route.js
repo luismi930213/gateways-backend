@@ -4,6 +4,7 @@ const path = require('path')
 const BaseModelService = require('../services/basemodel.service')
 const modelService = new BaseModelService('Gateway')
 const validator = require('../services/validators/validator')
+const { param } = require('express-validator')
 
 router.get('/',
     async (req, res, next) => {
@@ -28,6 +29,7 @@ router.post('/',
     })
 
 router.get('/:id',
+    param('id').isUUID().withMessage('Id is invalid'),
     async (req, res, next) => {
         const data = await modelService.find(req.params.id, {
             include: {
@@ -38,6 +40,7 @@ router.get('/:id',
     })
 
 router.put('/:id',
+    param('id').isUUID().withMessage('Id is invalid'),
     validator.gatewaySaveRules,
     validator.validate,
     async (req, res, next) => {
@@ -46,6 +49,7 @@ router.put('/:id',
     })
 
 router.delete('/:id',
+    param('id').isUUID().withMessage('Id is invalid'),
     async (req, res, next) => {
         const data = await modelService.delete(req.params.id)
         res.send({ data: data })

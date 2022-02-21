@@ -1,6 +1,5 @@
 const { body, validationResult } = require('express-validator')
 const db = require('../../models')
-const peripheral = require('../../models/peripheral')
 
 const gatewaySaveRules = [
     body('name')
@@ -17,7 +16,7 @@ const peripheralSaveRules = [
         .withMessage('Vendor can not be empty'),
     body('status')
         .isIn(['online', 'offline'])
-        .withMessage('Status values allowed are online and offline'),
+        .withMessage('Statuses values allowed are online or offline'),
     body('gateway_id')
         .not().isEmpty()
         .custom(async (value, data) => {
@@ -32,7 +31,7 @@ const peripheralSaveRules = [
                 }
             }).then(peripherals => {
                 if (!!peripherals && peripherals.length == 10)
-                    return Promise.reject('Peripheral device limit exceeded')
+                    return Promise.reject('Only 10 peripherals by gateway allowed')
             })
         }),
 ]
@@ -43,7 +42,6 @@ const validate = (req, res, next) => {
     if (errors.isEmpty()) {
         return next()
     }
-
     return res.status(400).json({ errors: errors.array() });
 }
 
