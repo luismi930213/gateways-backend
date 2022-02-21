@@ -30,6 +30,8 @@ const peripheralSaveRules = [
                     gateway_id: value
                 }
             }).then(peripherals => {
+                if (!peripherals)
+                    return Promise.resolve()
                 if (!!peripherals && peripherals.length == 10)
                     return Promise.reject('Only 10 peripherals by gateway allowed')
             })

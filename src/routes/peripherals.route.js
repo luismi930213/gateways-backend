@@ -30,14 +30,14 @@ router.post('/',
     })
 
 router.get('/:id',
-    param('id').isUUID().withMessage('Id is invalid'),
+    param('id').isNumeric().withMessage('Id is invalid'),
     async (req, res, next) => {
         const data = await modelService.find(req.params.id)
         res.send({ data: data })
     })
 
 router.put('/:id',
-    param('id').isUUID().withMessage('Id is invalid'),
+    param('id').isNumeric().withMessage('Id is invalid'),
     validator.peripheralSaveRules,
     validator.validate,
     async (req, res, next) => {
@@ -46,7 +46,7 @@ router.put('/:id',
     })
 
 router.delete('/:id',
-    param('id').isUUID().withMessage('Id is invalid'),
+    param('id').isNumeric().withMessage('Id is invalid'),
     async (req, res, next) => {
         const data = await modelService.delete(req.params.id)
         res.send({ data: data })

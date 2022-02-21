@@ -24,6 +24,7 @@ router.post('/',
     validator.gatewaySaveRules,
     validator.validate,
     async (req, res, next) => {
+        delete req.body.id
         const data = await modelService.save(req.body)
         res.send({ data: data })
     })
