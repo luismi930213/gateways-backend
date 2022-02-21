@@ -8,10 +8,8 @@ beforeAll(async () => {
     await database.sequelize
         .sync()
         .then(() => {
-            console.log('database created')
             return testData.init()
         })
-        .then(data => console.log('test data created'))
         .catch(err => console.log(err))
 });
 

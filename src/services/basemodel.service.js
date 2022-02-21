@@ -26,10 +26,12 @@ class BaseModelService {
         return result
     }
 
-    async find(id) {
+    async find(id, query) {
+        if (!query)
+            query = {}
         if (!id)
             return 'id is required';
-        return this.model.findByPk(id)
+        return this.model.findByPk(id, query)
     }
 
     async findOne(opts) {

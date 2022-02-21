@@ -38,7 +38,7 @@ router.put('/:id',
     validator.peripheralSaveRules,
     validator.validate,
     async (req, res, next) => {
-        const data = await modelService.save(req.body, req, params.id)
+        const data = await modelService.save(req.body, req.params.id)
         res.send({ data: data })
     })
 

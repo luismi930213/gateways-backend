@@ -5,16 +5,15 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Peripheral extends Model {
     static associate(models) {
-      Peripheral.belongsTo(models['Gateway'])
+      Peripheral.belongsTo(models['Gateway'], {
+        foreignKey: 'gateway_id',
+        onDelete: 'CASCADE'
+      })
     }
   };
   Peripheral.init({
     vendor: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    date: {
-      type: DataTypes.DATE,
       allowNull: false
     },
     status: {

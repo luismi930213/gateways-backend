@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   class Gateway extends Model {
     static associate(models) {
       Gateway.hasMany(models['Peripheral'], {
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        as: 'Peripherals'
       })
     }
   };

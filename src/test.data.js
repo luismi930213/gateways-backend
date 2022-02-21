@@ -13,17 +13,14 @@ module.exports.init = async function () {
     return db['Peripheral'].bulkCreate([
         {
             vendor: 'HP',
-            date: new Date(),
             GatewayId: gateways[0].id
         },
         {
             vendor: 'IBM',
-            date: new Date(),
             GatewayId: gateways[1].id,
         },
         {
             vendor: 'AOPEN',
-            date: new Date(),
             GatewayId: gateways[0].id,
             status: 'offline'
         }

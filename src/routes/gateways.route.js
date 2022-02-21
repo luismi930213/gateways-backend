@@ -29,7 +29,11 @@ router.post('/',
 
 router.get('/:id',
     async (req, res, next) => {
-        const data = await modelService.find(req.params.id)
+        const data = await modelService.find(req.params.id, {
+            include: {
+                association: 'Peripherals'
+            }
+        })
         res.send({ data: data })
     })
 
