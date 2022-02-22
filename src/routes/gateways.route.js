@@ -12,11 +12,12 @@ router.get('/',
         const page = req.query.page;
         const skip = req.query.skip
         let offset = 0
+        let include = { association: 'Peripherals' }
         if (page)
             offset = (page - 1) * limit
         else if (skip)
             offset = skip
-        const data = await modelService.list({ offset, limit })
+        const data = await modelService.list({ include, offset, limit })
         res.send({ ...data })
     })
 
