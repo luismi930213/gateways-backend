@@ -30,7 +30,7 @@ const peripheralSaveRules = [
                     gateway_id: value
                 }
             })
-            if (!!peripherals && peripherals.length >= 4)
+            if (!!peripherals && peripherals.length >= 10)
                 throw new Error('Only 10 peripherals by gateway allowed')
             return true;
         }),
