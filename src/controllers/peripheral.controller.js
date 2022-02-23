@@ -2,11 +2,11 @@ const BaseModelService = require('../services/basemodel.service');
 const modelService = new BaseModelService('Peripheral');
 
 const getAll = (query) => {
-    const limit = query.limit || 20;
+    const limit = query.limit || 50;
     const page = query.page;
     const skip = query.skip
-    const include = { association: 'Gateway', require: true }
     let offset = 0
+    const include = { association: 'Gateway', require: true }
     if (page)
         offset = (page - 1) * limit
     else if (skip)
@@ -17,7 +17,8 @@ const getAll = (query) => {
 const getOne = (id) => {
     return modelService.find(id, {
         include: {
-            association: 'Peripherals'
+            association: 'Gateway',
+            require: true
         }
     })
 }

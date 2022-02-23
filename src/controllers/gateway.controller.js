@@ -2,11 +2,11 @@ const BaseModelService = require('../services/basemodel.service');
 const modelService = new BaseModelService('Gateway');
 
 const getAll = (query) => {
-    const limit = query.limit || 20;
+    const limit = query.limit || 50;
     const page = query.page;
     const skip = query.skip
     let offset = 0
-    let include = { association: 'Peripherals' }
+    let include = { association: 'Peripherals', require: false }
     if (page)
         offset = (page - 1) * limit
     else if (skip)
