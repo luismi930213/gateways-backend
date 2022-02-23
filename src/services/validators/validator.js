@@ -23,18 +23,16 @@ const peripheralSaveRules = [
             if (!!data.req.params.id) {
                 const obj = await db['Peripheral'].findByPk(data.req.params.id)
                 if (obj.gateway_id == value)
-                    return Promise.resolve()
+                    return true;
             }
-            return db['Peripheral'].findAll({
+            const peripherals = await db['Peripheral'].findAll({
                 where: {
                     gateway_id: value
                 }
-            }).then(peripherals => {
-                if (!peripherals)
-                    return Promise.resolve()
-                if (!!peripherals && peripherals.length == 10)
-                    return Promise.reject('Only 10 peripherals by gateway allowed')
             })
+            if (!!peripherals && peripherals.length >= 4)
+                throw new Error('Only 10 peripherals by gateway allowed')
+            return true;
         }),
 ]
 
