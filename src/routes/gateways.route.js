@@ -6,12 +6,26 @@ const { param } = require('express-validator');
 
 const controller = require('../controllers/gateway.controller')
 
+/**
+ * 
+ * GET /gateways
+ * @description Gets all getaways
+ * @summary When you make a request to this route you get all getaways from Database
+ * @return {string} 200 - All gateways - application/json
+ */
 router.get('/',
     async (req, res, next) => {
         const data = await controller.getAll(req.query)
         res.send({ ...data })
     })
 
+/**
+* 
+* POST /gateways
+* @description Gets all getaways
+* @summary When you make a request to this route you post one gateway to the Database
+* @return {string} 200 - One created gateway - application/json
+*/
 router.post('/',
     validator.gatewaySaveRules,
     validator.validate,

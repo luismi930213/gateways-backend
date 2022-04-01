@@ -2,10 +2,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var swaggerConfig = require('./config/swagger.config')
+var expressJSDocSwagger = require('express-jsdoc-swagger');
 
 var router = require('./routes');
 
 var app = express();
+swaggerConfig.options.baseDir = __dirname
+expressJSDocSwagger(app)(swaggerConfig.options)
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -16,6 +16,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-jsdoc-swagger": "^1.6.7",
     "express-validator": "^6.14.0",
     "lodash": "^4.17.21",
     "morgan": "~1.9.1",
