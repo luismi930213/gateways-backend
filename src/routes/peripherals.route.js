@@ -5,6 +5,7 @@ const validator = require('../services/validators/validator')
 const { param } = require('express-validator')
 
 const controller = require('../controllers/peripheral.controller')
+const authMiddleware = require('../middlewares/auth.middleware')
 
 router.get('/',
     async (req, res, next) => {
@@ -46,7 +47,7 @@ router.delete('/:id',
 module.exports = {
     path: '/peripherals',
     order: 1,
-    middlewares: [],
+    middlewares: [authMiddleware.bearer()],
     router: router,
     filename: path.basename(__filename)
 }

@@ -1,6 +1,10 @@
 const db = require('./models')
 
 module.exports.init = async function () {
+    await db['User'].create({
+        username: 'test',
+        password: 'test'
+    })
     const gateways = await db['Gateway'].bulkCreate([{
         name: 'first gateway',
         ip: '192.168.1.1'

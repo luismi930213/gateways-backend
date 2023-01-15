@@ -53,7 +53,7 @@ module.exports.init = (app) => {
 
 	// error handler
 	app.use(function (err, req, res, next) {
-		res.status(err.status || 500);
+		res.status(err.status || err.statusCode || 500);
 		const e = { message: err.message, status: err.status || res.statusCode }
 		e.stack = req.app.get('env') === 'development' ? err.stack : {};
 		res.send(e);
